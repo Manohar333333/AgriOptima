@@ -1,0 +1,37 @@
+#results.section {
+  /* The shared .section padding-top (up to 8.5rem) is meant for sections
+     reached by natural scrolling. This section is instead jumped to
+     programmatically (scrollIntoView after form submit) right below the
+     fixed navbar, so it needs a much tighter top offset or it leaves a
+     large empty gap under the navbar. */
+  padding-top: clamp(2rem, 5vw, 3rem);
+}
+
+.results__stack {
+  margin-top: 3rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.results__panel {
+  padding: 2rem;
+  border: 1px solid var(--surface-line);
+  border-radius: var(--radius-lg);
+  background: var(--surface);
+}
+
+.results__panel-title {
+  font-size: 1.05rem;
+  color: var(--ink);
+  margin-bottom: 1.5rem;
+}
+
+.results__empty {
+  margin-top: 3rem;
+  padding: 3rem;
+  text-align: center;
+  border: 1px dashed var(--surface-line);
+  border-radius: var(--radius-lg);
+  color: var(--ink-faint);
+}

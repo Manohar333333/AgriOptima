@@ -1,0 +1,33 @@
+.stat-card {
+  padding: 1.4rem 1.5rem;
+  background: var(--bg-elevated);
+  border: 1px solid var(--surface-line);
+  border-radius: var(--radius-md);
+}
+
+.stat-card__head {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--ink-muted);
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.stat-card__value {
+  margin-top: 0.6rem;
+  font-family: var(--font-display);
+  font-size: clamp(1.6rem, 2.6vw, 2.1rem);
+  color: var(--ink);
+}
+
+.stat-card__helper {
+  margin-top: 0.5rem;
+  font-size: 0.8125rem;
+  color: var(--ink-faint);
+  line-height: 1.5;
+}
+
+.stat-card--good .stat-card__value { color: var(--growth); }
+.stat-card--warn .stat-card__value { color: var(--amber); }
+.stat-card--critical .stat-card__value { color: var(--critical); }

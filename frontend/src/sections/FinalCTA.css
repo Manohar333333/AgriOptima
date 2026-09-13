@@ -1,0 +1,17 @@
+.final-cta {
+  border-top: 1px solid var(--surface-line);
+}
+
+.final-cta__inner {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2.25rem;
+}
+
+.final-cta__title {
+  font-size: clamp(1.8rem, 4vw, 2.6rem);
+  max-width: 26ch;
+  color: var(--ink);
+}

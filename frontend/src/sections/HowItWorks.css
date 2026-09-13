@@ -1,0 +1,61 @@
+.how__steps {
+  list-style: none;
+  margin: 3.5rem 0 0;
+  padding: 0;
+  display: grid;
+  gap: 0;
+}
+
+.how__step {
+  display: grid;
+  grid-template-columns: 4.5rem 1fr;
+  gap: 1.5rem;
+  padding-block: 1.9rem;
+  padding-inline-start: 0;
+  border-top: 1px solid var(--surface-line);
+  align-items: baseline;
+  transition:
+    padding-inline-start var(--duration-base) var(--ease-out),
+    border-color var(--duration-base) var(--ease-out);
+}
+
+.how__step:last-child {
+  border-bottom: 1px solid var(--surface-line);
+}
+
+@media (hover: hover) {
+  .how__step:hover {
+    padding-inline-start: 0.5rem;
+    border-color: rgba(134, 192, 138, 0.28);
+  }
+}
+
+.how__step-number {
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  color: var(--growth-dim);
+  transition: color var(--duration-base) var(--ease-out);
+}
+
+.how__step:hover .how__step-number {
+  color: var(--growth);
+}
+
+.how__step-title {
+  font-size: 1.2rem;
+  color: var(--ink);
+}
+
+.how__step-body {
+  margin-top: 0.5rem;
+  color: var(--ink-muted);
+  max-width: 56ch;
+  font-size: 0.95rem;
+}
+
+@media (max-width: 640px) {
+  .how__step {
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+  }
+}

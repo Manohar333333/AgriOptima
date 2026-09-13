@@ -1,0 +1,196 @@
+:root {
+  /* Color */
+  --bg: #0e1a13;
+  --bg-elevated: #142418;
+  --surface: #1b2e21;
+  --surface-line: rgba(244, 241, 230, 0.1);
+  --ink: #f4f1e6;
+  --ink-muted: #b6c2b4;
+  --ink-faint: #7c8a7c;
+  --forest: #2f5b3f;
+  --growth: #86c08a;
+  --growth-dim: #5c8f63;
+  --soil: #b3855a;
+  --water: #6fa8c0;
+  --amber: #d9a441;
+  --critical: #c4694a;
+
+  /* Type */
+  --font-display: "Fraunces", "Iowan Old Style", serif;
+  --font-body: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+
+  /* Layout */
+  --content-max: 1240px;
+  --gutter: clamp(1.25rem, 4vw, 3.5rem);
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 18px;
+
+  /* Motion — one shared system. ease-out for anything entering or
+     responding to touch (decelerates, never overshoots); ease-in-out for
+     anything leaving or crossfading. No spring/bounce curves by design. */
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --duration-instant: 120ms;
+  --duration-fast: 200ms;
+  --duration-base: 320ms;
+  --duration-slow: 560ms;
+
+  /* Elevation — one shadow language reused everywhere instead of an
+     ad-hoc box-shadow per component. */
+  --lift-1: 0 1px 2px rgba(0, 0, 0, 0.2);
+  --lift-2: 0 14px 34px -20px rgba(0, 0, 0, 0.65);
+  --lift-hover: -3px;
+
+  color-scheme: dark;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-feature-settings: "tnum" 1, "cv11" 1;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  font-weight: 500;
+  line-height: 1.08;
+  margin: 0;
+  letter-spacing: -0.015em;
+}
+
+p {
+  margin: 0;
+  line-height: 1.6;
+}
+
+a {
+  color: inherit;
+}
+
+button {
+  font-family: inherit;
+}
+
+img, svg {
+  display: block;
+  max-width: 100%;
+}
+
+.container {
+  max-width: var(--content-max);
+  margin: 0 auto;
+  padding-inline: var(--gutter);
+}
+
+.page {
+  position: relative;
+  z-index: 1;
+}
+
+.section {
+  position: relative;
+  padding-block: clamp(4.5rem, 11vw, 8.5rem);
+}
+
+.section-tag {
+  display: inline-block;
+  font-family: var(--font-body);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--growth);
+  margin-bottom: 1rem;
+  letter-spacing: 0.01em;
+}
+
+.section-heading {
+  font-size: clamp(1.9rem, 3.4vw, 2.75rem);
+  color: var(--ink);
+  max-width: 32ch;
+}
+
+.section-sub {
+  margin-top: 1.1rem;
+  font-size: 1.0625rem;
+  color: var(--ink-muted);
+  max-width: 50ch;
+  line-height: 1.65;
+}
+
+.hairline {
+  border: none;
+  border-top: 1px solid var(--surface-line);
+}
+
+/* Shared card/panel behavior: a quiet lift + border brighten on hover,
+   a slightly compressed press-down on click. Every bordered surface in
+   the app (why-cards, results panels, irrigation cards, alt-crop chips)
+   composes this instead of inventing its own hover treatment. */
+.surface-interactive {
+  transition:
+    transform var(--duration-base) var(--ease-out),
+    border-color var(--duration-base) var(--ease-out),
+    box-shadow var(--duration-base) var(--ease-out),
+    background-color var(--duration-base) var(--ease-out);
+}
+
+@media (hover: hover) {
+  .surface-interactive:hover {
+    transform: translateY(var(--lift-hover));
+    border-color: rgba(134, 192, 138, 0.32);
+    box-shadow: var(--lift-2);
+  }
+}
+
+.surface-interactive:active {
+  transform: translateY(-1px) scale(0.994);
+  transition-duration: var(--duration-instant);
+}
+
+:focus-visible {
+  outline: 2px solid var(--growth);
+  outline-offset: 3px;
+  transition: outline-offset var(--duration-fast) var(--ease-out);
+}
+
+::selection {
+  background: var(--growth-dim);
+  color: var(--bg);
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}

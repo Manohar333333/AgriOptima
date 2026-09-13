@@ -1,0 +1,59 @@
+.crop-rec {
+  padding: 2rem;
+  border: 1px solid var(--surface-line);
+  border-radius: var(--radius-lg);
+  background: var(--bg-elevated);
+}
+
+.crop-rec__name {
+  margin-top: 0.35rem;
+  font-size: 2.1rem;
+  color: var(--growth);
+}
+
+.crop-rec__confidence {
+  margin-top: 0.4rem;
+  color: var(--ink-muted);
+  font-size: 0.9rem;
+}
+
+.crop-rec__bars {
+  margin-top: 1.8rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+}
+
+.crop-rec__bar-row {
+  display: grid;
+  grid-template-columns: 6rem 1fr 3rem;
+  align-items: center;
+  gap: 0.85rem;
+}
+
+.crop-rec__bar-label {
+  font-size: 0.85rem;
+  color: var(--ink-muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.crop-rec__bar-track {
+  height: 8px;
+  border-radius: 999px;
+  background: var(--surface);
+  overflow: hidden;
+}
+
+.crop-rec__bar-fill {
+  height: 100%;
+  border-radius: 999px;
+  transition: width var(--duration-slow) var(--ease-out);
+}
+
+.crop-rec__bar-value {
+  font-size: 0.85rem;
+  color: var(--ink-faint);
+  text-align: right;
+}

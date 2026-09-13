@@ -1,0 +1,57 @@
+.irrigation {
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+}
+
+.irrigation__priority {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  color: var(--ink-muted);
+}
+
+.irrigation__priority-value {
+  margin-top: 0.3rem;
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+}
+
+.irrigation__priority-value--good { color: var(--growth); }
+.irrigation__priority-value--warn { color: var(--amber); }
+.irrigation__priority-value--critical { color: var(--critical); }
+
+.irrigation__cards {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.25rem;
+}
+
+.irrigation__card {
+  padding: 1.5rem;
+  border: 1px solid var(--surface-line);
+  border-radius: var(--radius-md);
+  background: var(--bg-elevated);
+  color: var(--water);
+}
+
+.irrigation__card h4 {
+  margin-top: 1rem;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.irrigation__card p {
+  margin-top: 0.5rem;
+  font-size: 0.875rem;
+  color: var(--ink-muted);
+  line-height: 1.6;
+}
+
+@media (max-width: 900px) {
+  .irrigation__cards {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,80 @@
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.85rem 1.5rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.95rem;
+  font-weight: 600;
+  font-family: var(--font-body);
+  border: 1px solid transparent;
+  cursor: pointer;
+  text-decoration: none;
+  transform: translateY(0) scale(1);
+  transition:
+    transform var(--duration-fast) var(--ease-out),
+    background-color var(--duration-base) var(--ease-out),
+    border-color var(--duration-base) var(--ease-out),
+    box-shadow var(--duration-base) var(--ease-out),
+    color var(--duration-base) var(--ease-out);
+}
+
+/* A physical surface: lifts a hair on hover, compresses on press.
+   No bounce — the press-return uses the same decel curve as everything
+   else, just faster, so it reads as touch feedback, not a template. */
+@media (hover: hover) {
+  .btn:hover {
+    transform: translateY(-1px) scale(1.008);
+  }
+}
+
+.btn:active {
+  transform: translateY(0) scale(0.98);
+  transition-duration: var(--duration-instant);
+}
+
+.btn--primary {
+  background: var(--growth);
+  color: #0e1a13;
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.08) inset, var(--lift-1);
+}
+
+.btn--primary:hover {
+  background: #93c896;
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.1) inset, 0 12px 28px -16px rgba(134, 192, 138, 0.45);
+}
+
+.btn--secondary {
+  background: transparent;
+  color: var(--ink);
+  border-color: var(--surface-line);
+}
+
+.btn--secondary:hover {
+  border-color: var(--growth-dim);
+  color: var(--growth);
+  background: rgba(134, 192, 138, 0.06);
+}
+
+.btn--ghost {
+  background: transparent;
+  color: var(--ink-muted);
+  padding-inline: 0;
+}
+
+.btn--ghost:hover {
+  color: var(--ink);
+  transform: translateY(-1px) scale(1);
+}
+
+.btn:disabled {
+  opacity: 0.6;
+  cursor: default;
+  transform: none !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .btn {
+    transition: none;
+  }
+}
