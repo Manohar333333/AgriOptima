@@ -1,6 +1,12 @@
 .water-opt {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.water-opt__overview {
   display: grid;
-  grid-template-columns: 220px 1fr;
+  grid-template-columns: 240px 1fr;
   gap: 2.5rem;
   align-items: center;
 }
@@ -28,14 +34,109 @@
 .water-opt__status--critical { color: var(--critical); background: rgba(196, 105, 74, 0.14); }
 .water-opt__status--neutral { color: var(--water); background: rgba(111, 168, 192, 0.14); }
 
+.water-opt__details {
+  width: 100%;
+  margin-top: 0.25rem;
+  padding-top: 0.85rem;
+  border-top: 1px solid var(--surface-line);
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.water-opt__detail-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.8125rem;
+}
+
+.water-opt__detail-label {
+  color: var(--ink-muted);
+}
+
+.water-opt__detail-value {
+  color: var(--ink);
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
 .water-opt__stats {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 1rem;
 }
 
+.water-opt__advice {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 1.25rem 1.5rem;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--surface-line);
+  background: var(--bg-elevated);
+}
+
+.water-opt__advice-icon-wrapper {
+  margin-top: 0.15rem;
+  flex-shrink: 0;
+}
+
+.water-opt__advice--good {
+  border-color: rgba(134, 192, 138, 0.3);
+  background: rgba(134, 192, 138, 0.08);
+}
+.water-opt__advice--good .water-opt__advice-icon {
+  color: var(--growth);
+}
+
+.water-opt__advice--warn {
+  border-color: rgba(217, 164, 65, 0.3);
+  background: rgba(217, 164, 65, 0.08);
+}
+.water-opt__advice--warn .water-opt__advice-icon {
+  color: var(--amber);
+}
+
+.water-opt__advice--critical {
+  border-color: rgba(196, 105, 74, 0.4);
+  background: rgba(196, 105, 74, 0.12);
+}
+.water-opt__advice--critical .water-opt__advice-icon {
+  color: var(--critical);
+}
+
+.water-opt__advice--neutral {
+  border-color: rgba(111, 168, 192, 0.3);
+  background: rgba(111, 168, 192, 0.08);
+}
+.water-opt__advice--neutral .water-opt__advice-icon {
+  color: var(--water);
+}
+
+.water-opt__advice-content {
+  flex: 1;
+}
+
+.water-opt__advice-title {
+  display: block;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--ink-muted);
+  margin-bottom: 0.3rem;
+}
+
+.water-opt__advice-text {
+  font-size: 0.9375rem;
+  color: var(--ink);
+  line-height: 1.55;
+  margin: 0;
+}
+
 @media (max-width: 900px) {
-  .water-opt {
+  .water-opt__overview {
     grid-template-columns: 1fr;
   }
   .water-opt__stats {

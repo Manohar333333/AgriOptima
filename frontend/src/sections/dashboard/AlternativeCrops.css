@@ -1,5 +1,15 @@
-.alt-crops__list {
-  margin-top: 1rem;
+.alt-crops {
+  display: flex;
+  flex-direction: column;
+}
+
+.alt-crops__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+}
+
+.alt-crops__chips {
   display: flex;
   flex-wrap: wrap;
   gap: 0.75rem;
@@ -21,4 +31,111 @@
   width: 8px;
   height: 8px;
   border-radius: 50%;
+}
+
+.alt-crop-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding: 1.1rem 1.25rem;
+  background: var(--bg-elevated);
+  border: 1px solid var(--surface-line);
+  border-radius: var(--radius-md);
+}
+
+.alt-crop-card__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.alt-crop-card__crop {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.alt-crop-card__dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.alt-crop-card__name {
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.alt-crop-card__badge {
+  font-size: 0.725rem;
+  font-weight: 600;
+  padding: 0.18rem 0.55rem;
+  border-radius: 999px;
+  text-transform: capitalize;
+}
+
+.alt-crop-card__badge--good {
+  color: var(--growth);
+  background: rgba(134, 192, 138, 0.14);
+}
+
+.alt-crop-card__badge--warn {
+  color: var(--amber);
+  background: rgba(217, 164, 65, 0.14);
+}
+
+.alt-crop-card__badge--critical {
+  color: var(--critical);
+  background: rgba(196, 105, 74, 0.14);
+}
+
+.alt-crop-card__badge--neutral {
+  color: var(--water);
+  background: rgba(111, 168, 192, 0.14);
+}
+
+.alt-crop-card__details {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--surface-line);
+}
+
+.alt-crop-card__row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.8125rem;
+}
+
+.alt-crop-card__label {
+  color: var(--ink-muted);
+}
+
+.alt-crop-card__value {
+  color: var(--ink);
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+.alt-crop-card__value--good {
+  color: var(--growth);
+}
+
+.alt-crop-card__value--warn {
+  color: var(--amber);
+}
+
+.alt-crop-card__value--critical {
+  color: var(--critical);
+}
+
+@media (max-width: 640px) {
+  .alt-crops__grid {
+    grid-template-columns: 1fr;
+  }
 }

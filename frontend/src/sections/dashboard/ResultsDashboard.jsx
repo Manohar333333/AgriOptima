@@ -39,6 +39,7 @@ export default function ResultsDashboard({ result, status }) {
             </div>
 
             <div className="results__panel">
+              <h3 className="results__panel-title">Water-efficient alternatives</h3>
               <AlternativeCrops alternatives={result.alternatives} />
             </div>
           </div>
