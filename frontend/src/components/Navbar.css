@@ -53,6 +53,13 @@
   opacity: 0.82;
 }
 
+.navbar__brand svg,
+.navbar__brand img {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+}
+
 .navbar__brand svg {
   color: var(--growth);
 }

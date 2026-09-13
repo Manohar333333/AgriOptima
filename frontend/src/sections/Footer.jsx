@@ -1,4 +1,4 @@
-import { Sprout, Mail, Github, Linkedin, Phone } from "lucide-react";
+import { Mail, Github, Linkedin, Phone } from "lucide-react";
 import "./Footer.css";
 
 const CREDIT_LINKS = [
@@ -26,7 +26,7 @@ export default function Footer() {
     <footer className="footer">
       <div className="container footer__inner">
         <a href="#top" className="footer__brand">
-          <Sprout size={18} strokeWidth={2} aria-hidden="true" />
+          <img src="/AgriOptima.png" alt="" width="18" height="18" aria-hidden="true" />
           <span>AgriOptima</span>
         </a>
         <nav className="footer__links" aria-label="Footer">

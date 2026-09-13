@@ -1,3 +1,4 @@
+import { useEffect, useRef } from "react";
 import { Loader2 } from "lucide-react";
 import SectionHeading from "../components/SectionHeading";
 import Button from "../components/Button";
@@ -8,7 +9,56 @@ import "./FarmAnalysisForm.css";
 export default function FarmAnalysisForm({ farmAnalysis }) {
   const { form, errors, status, setField, submit } = farmAnalysis;
   const revealRef = useScrollReveal("[data-reveal]", { blur: false });
+  const gridRef = useRef(null);
   const isLoading = status === "loading";
+
+  useEffect(() => {
+    const grid = gridRef.current;
+    if (!grid) return;
+
+    const handleWheel = (e) => {
+      const input = e.target;
+      if (!input || input.tagName !== "INPUT" || input.type !== "number") return;
+
+      const fieldKey = input.name;
+      const field = NUMERIC_FIELDS.find((f) => f.key === fieldKey);
+      if (!field) return;
+
+      e.preventDefault();
+      if (!e.deltaY) return;
+
+      const currentVal = form[field.key];
+      const step = Number(field.step) || 1;
+      const min = field.min !== undefined ? Number(field.min) : -Infinity;
+      const max = field.max !== undefined ? Number(field.max) : Infinity;
+
+      const stepStr = String(field.step ?? "1");
+      const decimals = stepStr.includes(".") ? stepStr.split(".")[1].length : 0;
+
+      let baseVal;
+      if (
+        currentVal === "" ||
+        currentVal === null ||
+        currentVal === undefined ||
+        isNaN(Number(currentVal))
+      ) {
+        baseVal = min > -Infinity && min > 0 ? min : 0;
+      } else {
+        baseVal = Number(currentVal);
+      }
+
+      // Swiping UP on laptop touchpad / scrolling up -> value increases
+      // Swiping DOWN on laptop touchpad / scrolling down -> value decreases
+      const nextVal = e.deltaY > 0 ? baseVal + step : baseVal - step;
+      const clamped = Math.max(min, Math.min(max, nextVal));
+      const formatted = Number(clamped.toFixed(decimals));
+
+      setField(field.key, String(formatted));
+    };
+
+    grid.addEventListener("wheel", handleWheel, { passive: false });
+    return () => grid.removeEventListener("wheel", handleWheel, { passive: false });
+  }, [form, setField]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -25,7 +75,7 @@ export default function FarmAnalysisForm({ farmAnalysis }) {
         />
 
         <form className="farm-form__form" onSubmit={handleSubmit} noValidate data-reveal>
-          <div className="farm-form__grid">
+          <div className="farm-form__grid" ref={gridRef}>
             <Field label="Soil type" error={errors.Soil_Type}>
               <select
                 value={form.Soil_Type}
@@ -75,6 +125,7 @@ export default function FarmAnalysisForm({ farmAnalysis }) {
                 <input
                   type="number"
                   inputMode="decimal"
+                  name={field.key}
                   value={form[field.key]}
                   min={field.min}
                   max={field.max}

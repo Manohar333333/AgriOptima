@@ -20,6 +20,13 @@
   text-decoration: none;
 }
 
+.footer__brand svg,
+.footer__brand img {
+  width: 18px;
+  height: 18px;
+  object-fit: contain;
+}
+
 .footer__brand svg {
   color: var(--growth);
 }

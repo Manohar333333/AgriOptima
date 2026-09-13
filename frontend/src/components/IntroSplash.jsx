@@ -1,6 +1,5 @@
 import { useEffect, useMemo, useRef } from "react";
 import gsap from "gsap";
-import { Sprout } from "lucide-react";
 import { useReducedMotion } from "../hooks/useReducedMotion";
 import { EASE_OUT, EASE_IN_OUT } from "../utils/motion";
 import "./IntroSplash.css";
@@ -138,7 +137,7 @@ export default function IntroSplash({ onExitStart, onComplete }) {
         <div className="intro-splash__mark-wrap">
           <div className="intro-splash__glow" ref={glowRef} />
           <div className="intro-splash__mark" ref={markRef}>
-            <Sprout size={34} strokeWidth={1.6} aria-hidden="true" />
+            <img src="/AgriOptima.png" alt="" width="40" height="40" aria-hidden="true" />
           </div>
         </div>
         <h1 className="intro-splash__wordmark" ref={wordmarkRef}>

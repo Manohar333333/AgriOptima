@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { Sprout } from "lucide-react";
 import Button from "./Button";
 import "./Navbar.css";
 
@@ -22,7 +21,7 @@ export default function Navbar() {
     <header className={`navbar ${scrolled ? "navbar--scrolled" : ""}`}>
       <div className="container navbar__inner">
         <a href="#top" className="navbar__brand">
-          <Sprout size={20} strokeWidth={2} aria-hidden="true" />
+          <img src="/AgriOptima.png" alt="" width="20" height="20" aria-hidden="true" />
           <span>AgriOptima</span>
         </a>
         <nav className="navbar__links" aria-label="Primary">
